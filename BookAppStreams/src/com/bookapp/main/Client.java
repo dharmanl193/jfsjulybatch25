@@ -22,6 +22,20 @@ public class Client {
         } catch (BookNotFoundException e) {
             System.out.println("Error: " + e.getMessage());
         }
+        
+        sc = new Scanner(System.in);
+
+        System.out.print("Enter category keyword: ");
+        String category = sc.nextLine();
+
+        try {
+            List<Book> books = bookService.getByCategory(category);
+            printBooks(books);
+        } catch (BookNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        
+        
     }
 
     private static void printBooks(List<Book> books) {
